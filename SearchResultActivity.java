@@ -299,18 +299,23 @@ public class SearchResultActivity extends AppCompatActivity implements Navigatio
 
 
                             String response_str = Postsresponse.toString(); //get the String from stringbuilder
-                            JSONObject jsonPosts = null;
-                            try {
-                                jsonPosts = new JSONObject(response_str);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(response_str.equals("No Result")) {
+                                Toast.makeText(getApplicationContext(), "No Result", Toast.LENGTH_LONG).show();
                             }
-                            try {
-                                JSONArray jArray = jsonPosts.getJSONArray("posts");
-                                getmainArray(jArray);
+                            else {
+                                JSONObject jsonPosts = null;
+                                try {
+                                    jsonPosts = new JSONObject(response_str);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                try {
+                                    JSONArray jArray = jsonPosts.getJSONArray("posts");
+                                    getmainArray(jArray);
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
 
 
