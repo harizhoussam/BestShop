@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,9 +86,7 @@ public class customadapter extends ArrayAdapter<String> implements Filterable {
             String url = rimg[position];
 
             holder.tv1.setText(ttl[position]);
-            if (dsc[position].length() < 60)
-                holder.tv2.setText(dsc[position]);
-            else holder.tv2.setText(dsc[position].substring(0, 57) + "...");
+            holder.tv2.setText(dsc[position]);
 
             if (liked[position] == "1") {
                 holder.tv3.setText("Unlike");
